@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pesan Tempat Titip</title>
+</head>
+<h4>
+    <h2>Data User</h2>
+    <button><a href="user/daftar">Tambah User</a></button>
+    <br><br>
+        <table border="1">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>email</th>
+                        <th>Telepon</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <% if(dataUser.length){ var no = 0 ; for(var i = 0 ; i < dataUser.length ; i++){no++;%> 
+                        <tr>
+                            <td><%= no %></td>
+                            <td><%= dataUser[i].nm_user %></td>
+                            <td><%= dataUser[i].email_user %></td>
+                            <td><%= dataUser[i].no_user %></td>
+                            <td>
+                                <a href="user/update/<%= dataUser[i].id_user%>" class="btn btn-secondary btn-sm">Update</a>
+                                <a href="user/delete/<%= dataUser[i].id_user%>" class="btn btn-secondary btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    <% }} %> 
+                </tbody>
+            </table>
+</h4>
+<body>
+</body>
+</html>

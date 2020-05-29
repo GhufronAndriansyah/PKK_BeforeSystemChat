@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LogIn</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />		
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+		<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="//fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+		<link href="toni.ico" rel="shortcut icon"> 
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+		</head>
+<body>
+
+<h1>NodeJS Mysql</h1>
+	<div class="main-agileits">
+		<div class="form-w3-agile">
+			<h2>Register Pet</h2>
+			<form action="pet/regpet" method="post">
+                <div class="form-sub-w3">
+                        <input type="hidden" name="email_user" value="<%= session %>" required/>
+                    <div class="icon-w3">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="form-sub-w3">
+                        <input type="text" name="species_pet" placeholder="Species Pet..." required />
+                    <div class="icon-w3">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+				<div class="form-sub-w3">
+					<input type="text" name="name_pet" placeholder="Name Pet..." required />
+				<div class="icon-w3">
+					<i class="fa fa-user" aria-hidden="true"></i>
+				</div>
+                </div>
+                <div class="form-sub-w3">
+					<input type="text" name="age_pet" placeholder="Age Pet..." required />
+				<div class="icon-w3">
+					<i class="fa fa-user" aria-hidden="true"></i>
+				</div>
+				</div>
+				<div class="submit-w3l">
+					<input type="submit" value="Register">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pesan Tempat Titip</title>
+</head>
+<h2>Pesan Tempat</h2>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Tempat</th>
+                <th>Lokasi Tempat</th>
+                <th>Pesan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(data.length){ var no = 0 ; for(var i = 0 ; i < data.length ; i++){no++;%> 
+                <tr>
+                    <td><%= no %></td>
+                    <td><%= data[i].nama_tempat %></td>
+                    <td><%= data[i].lokasi_tempat %></td>
+                    <td>
+                        <a href="/api/pesan/pesan/<%= data[i].id_tempat%>" class="btn btn-secondary btn-sm">Pesan</a>
+                    </td>
+                </tr>
+            <% }} %> 
+        </tbody>
+    </table>
+
+</body>
+</html>

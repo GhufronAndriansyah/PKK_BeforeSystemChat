@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pesan Tempat Titip</title>
+</head>
+<h4>
+    <h2>Data Tempat</h2>
+    <button><a href="tempat/daftar">Tambah Tempat</a></button>
+    <br><br>
+        <table border="1">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Petugas</th>
+                        <th>Nama Tempat</th>
+                        <th>Lokasi Tempat</th>
+                        <th>harga</th>
+                        <th>waktu</th>
+                        <th>keterangan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <% if(data.length){ var no = 0 ; for(var i = 0 ; i < data.length ; i++){no++;%> 
+                        <tr>
+                            <td><%= no %></td>
+                            <td><%= data[i].nama_petugas %></td>
+                            <td><%= data[i].nama_tempat %></td>
+                            <td><%= data[i].lokasi_tempat %></td>
+                            <td><%= data[i].harga_tempat %></td>
+                            <td><%= data[i].harga_waktu %></td>
+                            <td><%= data[i].keterangan_tempat %></td>
+                            <td>
+                                <a href="tempat/update/<%= data[i].id_tempat%>" class="btn btn-secondary btn-sm">Update</a>
+                                <a href="tempat/delete/<%= data[i].id_tempat%>" class="btn btn-secondary btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    <% }} %> 
+                </tbody>
+            </table>
+</h4>
+<body>
+</body>
+</html>

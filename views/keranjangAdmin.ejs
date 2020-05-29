@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pesan Tempat Titip</title>
+</head>
+<h4>
+    <h2>Data Keranjang</h2>
+    <button><a href="keranjang/daftar">Tambah Keranjang</a></button>
+    <br><br>
+        <table border="1">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Id User</th>
+                        <th>Id Pet</th>
+                        <th>Id Tempat</th>
+                        <th>Waktu</th>
+                        <th>Total Harga</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <% if(data.length){ var no = 0 ; for(var i = 0 ; i < data.length ; i++){no++;%> 
+                        <tr>
+                            <td><%= no %></td>
+                            <td><%= data[i].id_user %></td>
+                            <td><%= data[i].id_pet %></td>
+                            <td><%= data[i].id_tempat %></td>
+                            <td><%= data[i].waktu %></td>
+                            <td><%= data[i].total_harga %></td>
+                            <td>
+                                <a href="keranjang/update/<%= data[i].id_keranjang%>" class="btn btn-secondary btn-sm">Update</a>
+                                <a href="keranjang/delete/<%= data[i].id_keranjang%>" class="btn btn-secondary btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    <% }} %> 
+                </tbody>
+            </table>
+</h4>
+<body>
+</body>
+</html>

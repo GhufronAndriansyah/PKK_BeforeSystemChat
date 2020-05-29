@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pesan Tempat Titip</title>
+</head>
+<h1><%= data[0].nama_tempat %> </h1>
+<h2>Lokasi Tempat :<%= data[0].lokasi_tempat %> </h2>
+<h2>Harga :Rp <%= data[0].harga_tempat %>/Hari </h2>
+<h4>Keterangan : <br> <p><%= data[0].keterangan_tempat %></p> </h4>  
+<h4>
+    <h3>Hewan Peliharaan</h3>
+        <table border="1">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Hewan</th>
+                        <th>Species Hewan</th>
+                        <th>Umursss</th>
+                        <th bgcolor="grey" style="color: white;">Waktu?</th>
+                        <th>Kirim</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <% if(dataPet.length){ var no = 0 ; for(var i = 0 ; i < dataPet.length ; i++){no++;%> 
+                        <form action="keranjang" method="post">
+                        <tr>
+                            <td><%= no %></td>
+                            <td><%= dataPet[i].name_pet %></td>
+                            <td><%= dataPet[i].species_pet %></td>
+                            <td><%= dataPet[i].age_pet %></td>
+                            <td><input type="number" name="waktu" min="1" max="5" required> Hari</td>
+                            <td>
+                                    <input type="hidden" name="harga" value=<%= data[0].harga_tempat %>>
+                                    <input type="hidden" name="id_user" value=<%= session %>>
+                                    <input type="hidden" name="id_pet" value=<%= dataPet[i].id_pet %>>
+                                    <input type="hidden" name="id_tempat" value=<%= data[0].id_tempat%>>
+                                    <div class="submit-w3l">
+                                            <input type="submit" value="Tambahkan">
+                                    </div>                                
+                                </form>
+                            </td>
+                        </tr>
+                    <% }} %> 
+                </tbody>
+            </table>
+</h4>
+<h4>
+    <h3>Keranjang</h3>
+    <table border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Hewan</th>
+                    <th>Nama Tempat</th>
+                    <th>Harga PerHari</th>
+                    <th>Waktu</th>
+                    <th>Jumlah</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <% if(dataKer.length){ var no = 0 ; for(var i = 0 ; i < dataKer.length ; i++){no++;%> 
+                    <tr>
+                        <td><%= no %></td>
+                        <td><%= dataKer[i].name_pet %></td>
+                        <td><%= dataKer[i].nama_tempat %></td>
+                        <td><%= dataKer[i].harga_tempat%></td>
+                        <td><%= dataKer[i].waktu%> Hari</td>
+                        <td>Rp <%= dataKer[i].total_harga%></td>
+                        <%
+                            function getRandomIntInclusive(min, max) {
+                                min = Math.ceil(min);
+                                max = Math.floor(max);
+                                return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+                                }
+                                
+                         %> 
+                         <% var kode = getRandomIntInclusive(1000,999999); %> 
+                         
+                        <td> 
+                            <form action="keranjang/delete" method="post">
+                            <input type="hidden" name="id_keranjang" value=<%=dataKer[i].id_keranjang%>>
+                            <input type="hidden" name="id_pet" value=<%=dataKer[i].id_pet%>>
+                            <input type="hidden" name="id_tempat" value=<%=dataKer[i].id_tempat%>>
+                            <input type="hidden" name="id_user" value=<%=dataKer[i].id_user%>>
+
+                            <div class="submit-w3l">
+                                    <input type="submit" value="Batalkan">
+                            </div>                                
+                        </form>
+                        
+                    </td>
+                    </tr>
+                <% }} %>
+                <%       
+                var i = 0
+                var Harga = 0
+                while(i < dataKer.length ){
+                    Harga = Harga +  dataKer[i].total_harga
+                    i++;
+                } 
+                %>  
+                <tr>
+                <th colspan="5">Harga Total</th>
+
+                <th>Rp <%=Harga%> </th>
+                
+                        
+                <th>
+                    <form action="transaksi" method="post">
+                    <input type="hidden" name="id_user" value=<%=session%>>
+                    <input type="hidden" name="kode" value=<%= kode %>>
+                    <div class="submit-w3l">
+                            <input type="submit" value="Bayar">
+                    </div>                                
+                </form>
+            </th>
+            </tr>
+            </tbody>
+        </table>
+
+</h4>
+<body>
+</body>
+<script>
+
+    
+    // var rupiah = document.getElementById("rupiah");
+    // rupiah.addEventListener('keyup', function(e){
+    //     rupiah.value = formatRupiah(this.value,'Rp ')
+    // });
+
+    // function formatRupiah(angka, prefix){
+    //     var number_string = angka.replace(/[^,\d]/g, '').toString(),
+    //     split  = number_string.split(','),
+    //     sisa = split[0].length % 3,
+    //     rupiah = split[0].substr(0,sisa),
+    //     ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+    //     if(ribuan){
+    //         separator = sisa ? '.' : '';
+    //         rupiah += separator + ribuan.join('.');
+    //     }
+
+    //     rupiah = split[1] != undefined? rupiah + ',' + split[1] : rupiah;
+    //     return prefix == undefined? rupiah : (rupiah ? 'Rp.' + rupiah : '');
+    // }
+
+</script>
+</html>

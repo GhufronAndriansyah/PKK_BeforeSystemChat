@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pesan Tempat Titip</title>
+</head>
+<h2>Pesanan Tempat</h2>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Id User</th>
+                <th>Nama Hewan</th>
+                <th>Nama Tempat</th>
+                <th>Waktu</th>
+                <th>Total Harga</th>
+                <th>Kode</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+                    
+            <% if(data.length){ var no = 0 ; for(var i = 0 ; i < data.length ; i++){no++;%> 
+                <tr>
+                    <td><%= no %></td>
+                    <td><%= data[i].id_user %></td>
+                    <td>
+                    <%if(data[i].titip.length){for(var k = 0 ; k < data[i].titip.length ; k++){;%> 
+                    <%= data[i].titip[k].name_pet%><br>
+                    <% }}%> 
+                    </td>
+                    <td><%= data[i].nama_tempat %></td>
+                    <td><%= data[i].waktu %></td>
+                    <td><%= data[i].total_harga %></td>
+                    <td><%= data[i].kode %></td>
+                    <td align="center"><%= data[i].status %></td>
+                    <td>
+                        <a href="transaksi/update/<%= data[i].id_transaksi%>" class="btn btn-secondary btn-sm">Telah Menerima Hewan</a> <br>
+                    </td>
+                </tr>
+            <% }} %> 
+        </tbody>
+    </table>
+
+</body>
+</html>
